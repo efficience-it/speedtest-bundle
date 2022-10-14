@@ -1,0 +1,48 @@
+{% extends '@!Speedtest/base.html.twig' %}
+
+{% block title %}Speedtest{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/speedtest/css/speedtest.css') }}">
+{% endblock %}
+
+{% block body %}
+        <div id="testWrapper">
+            <div id="test">
+                <div class="testGroup">
+                    <div class="testArea">
+                        <div class="testName">Download</div>
+                        <canvas id="dlMeter" class="meter"></canvas>
+                        <div id="dlText" class="meterText"></div>
+                        <div class="unit">Mb/s</div>
+                    </div>
+                    <div class="testArea">
+                        <div class="testName">Upload</div>
+                        <canvas id="ulMeter" class="meter"></canvas>
+                        <div id="ulText" class="meterText"></div>
+                        <div class="unit">Mb/s</div>
+                    </div>
+                </div>
+                <div class="testGroup">
+                    <div class="testArea2">
+                        <div class="testName">Ping</div>
+                        <div id="pingText" class="meterText"></div>
+                        <div class="unit">ms</div>
+                    </div>
+                    <div class="testArea2">
+                        <div class="testName">Jitter</div>
+                        <div id="jitText" class="meterText"></div>
+                        <div class="unit">ms</div>
+                    </div>
+                </div>
+            </div>
+            <div id="text-finish">Le speedtest est terminé, vous pouvez relancer le test en cliquant sur le bouton</div>
+            <div id="startStopBtn" onclick="startStop()"></div>
+        </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/speedtest/js/speedtest.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/speedtest/js/speedtest_wrapper.js') }}"></script>
+{% endblock %}
