@@ -1,0 +1,21 @@
+{
+    "name": "efficience-it/speedtest-bundle",
+    "description": "Speedtest",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "EfficienceIt\\SpeedtestBundle\\": "/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Efficience IT"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.5",
+        "ext-json": "*",
+        "ext-openssl": "*"
+    }
+}
