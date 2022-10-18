@@ -2,8 +2,7 @@
 
 namespace EfficienceIt\SpeedtestBundle\Controller;
 
-//use App\Entity\SpeedtestResult;
-use App\Entity\SpeedtestResult;
+use App\Model\SpeedtestResult;
 use EfficienceIt\SpeedtestBundle\Service\ChunkService;
 use EfficienceIt\SpeedtestBundle\Service\ClientIpService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,7 +29,7 @@ class SpeedtestController extends AbstractController
     }
 
     /**
-     * @Route("/get-ip/{random_number}", name="speedtest_get_ip", methods={"GET"})
+     * @Route("/get-ip/{random_number<\d+>}", name="speedtest_get_ip", methods={"GET"})
      */
     public function getIp(): Response
     {
@@ -41,29 +40,17 @@ class SpeedtestController extends AbstractController
             $processedString .= ' - '.$localIpInfo;
         }
 
-        return new JsonResponse(['processedString' => $processedString]);
+        return new JsonResponse([
+            'processedString' => $processedString
+        ]);
     }
 
     /**
-     * @Route("/generate-chunks/{random_number}", name="speedtest_generate_chunks", methods={"GET"})
+     * @Route("/generate-chunks/{random_number<\d+>}", name="speedtest_generate_chunks", methods={"GET"})
      */
     public function generateChunks() //chunk = segment of file, used to calculate download speed
     {
-        // Determine how much data we should send
-        $chunks = $this->chunkService->getChunkCount(self::CHUNK_SIZE);
-
-        // Generate data
-        if (function_exists('random_bytes')) {
-            $data = random_bytes(self::BYTES_SIZE);
-        } else {
-            $data = openssl_random_pseudo_bytes(self::BYTES_SIZE);
-        }
-
-        // Deliver chunks of 1048576 bytes
-        for ($i = 0; $i < $chunks; $i++) {
-            echo $data;
-            flush();
-        }
+        return new Response(random_bytes(self::BYTES_SIZE * self::CHUNK_SIZE));
     }
 
     /**
@@ -83,8 +70,6 @@ class SpeedtestController extends AbstractController
             ->setPing($requestContent['pingStatus'])
             ->setJitter($requestContent['jitterStatus'])
         ;
-
-        dump($result->toArray());
 
         return new JsonResponse($result->toArray());
     }

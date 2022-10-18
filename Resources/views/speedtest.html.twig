@@ -1,45 +1,40 @@
-{% extends '@!Speedtest/base.html.twig' %}
-
-{% block title %}Speedtest{% endblock %}
+{% extends 'base.html.twig' %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/speedtest/css/speedtest.css') }}">
 {% endblock %}
 
 {% block body %}
-        <div id="testWrapper">
-            <div id="test">
-                <div class="testGroup">
-                    <div class="testArea">
-                        <div class="testName">Download</div>
-                        <canvas id="dlMeter" class="meter"></canvas>
-                        <div id="dlText" class="meterText"></div>
-                        <div class="unit">Mb/s</div>
-                    </div>
-                    <div class="testArea">
-                        <div class="testName">Upload</div>
-                        <canvas id="ulMeter" class="meter"></canvas>
-                        <div id="ulText" class="meterText"></div>
-                        <div class="unit">Mb/s</div>
-                    </div>
+        <div id="speedtestWrapper">
+            <div class="speedtestGroup">
+                <div class="speedtestArea">
+                    <div class="speedtestName">Download</div>
+                    <canvas id="dlMeter" class="meter"></canvas>
+                    <div id="dlText" class="meterText"></div>
+                    <div class="unit">Mb/s</div>
                 </div>
-                <div class="testGroup">
-                    <div class="testArea2">
-                        <div class="testName">Ping</div>
-                        <div id="pingText" class="meterText"></div>
-                        <div class="unit">ms</div>
-                    </div>
-                    <div class="testArea2">
-                        <div class="testName">Jitter</div>
-                        <div id="jitText" class="meterText"></div>
-                        <div class="unit">ms</div>
-                    </div>
+                <div class="speedtestArea">
+                    <div class="speedtestName">Upload</div>
+                    <canvas id="ulMeter" class="meter"></canvas>
+                    <div id="ulText" class="meterText"></div>
+                    <div class="unit">Mb/s</div>
                 </div>
             </div>
-            <div id="text-finish">Le speedtest est terminé, vous pouvez relancer le test en cliquant sur le bouton</div>
-            <div id="startStopBtn" onclick="startStop()"></div>
+            <div class="speedtestGroup">
+                <div class="speedtestArea2">
+                    <div class="speedtestName">Ping</div>
+                    <div id="pingText" class="meterText"></div>
+                    <div class="unit">ms</div>
+                </div>
+                <div class="speedtestArea2">
+                    <div class="speedtestName">Jitter</div>
+                    <div id="jitText" class="meterText"></div>
+                    <div class="unit">ms</div>
+                </div>
+            </div>
+            <div id="speedtestTextFinish">Le speedtest est terminé, vous pouvez relancer le test en cliquant sur le bouton</div>
+            <div id="speedtestStartStopBtn" onclick="startStop()"></div>
         </div>
-
 {% endblock %}
 
 {% block javascripts %}

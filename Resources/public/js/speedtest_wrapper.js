@@ -51,23 +51,23 @@ function startStop(){
 		//speedtest is running, abort
 		s.abort();
 		data=null;
-		I("startStopBtn").className="";
-		I("startStopBtn").style.display='inline-block';
+		I("speedtestStartStopBtn").className="";
+		I("speedtestStartStopBtn").style.display='inline-block';
 		initUI();
 	}else{
 		//test is not running, begin
-		I("startStopBtn").className="running";
-        I("startStopBtn").style.display='none';
-		I("text-finish").style.opacity = "0";
+		I("speedtestStartStopBtn").className="running";
+        I("speedtestStartStopBtn").style.display='none';
+		I("speedtestTextFinish").style.opacity = "0";
 		s.onupdate=function(data){
             uiData=data;
 		};
 		s.onend=function(aborted){
-            I("startStopBtn").className="";
+            I("speedtestStartStopBtn").className="";
             updateUI(true);
 
-			document.getElementById('text-finish').style.opacity = "1";
-			document.getElementById('startStopBtn').style.display = "inline-block";
+			document.getElementById('speedtestTextFinish').style.opacity = "1";
+			document.getElementById('speedtestStartStopBtn').style.display = "inline-block";
 
 			let xhr = new XMLHttpRequest();
 			xhr.open('POST', location.origin +"/speedtest/speedtest-results", true);
