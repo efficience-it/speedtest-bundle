@@ -137,6 +137,9 @@ div.speedtestArea2 div.meterText#jitText:not(:empty), div.speedtestArea2 div.met
 }
 
 div#speedtestWrapper {
-    margin: 10vh;
+    border:none; padding:0; margin:10vh;
+    text-align:center;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    cursor: default;
     transition: margin-top 1s ease-out;
 }
