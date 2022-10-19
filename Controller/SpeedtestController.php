@@ -3,7 +3,6 @@
 namespace EfficienceIt\SpeedtestBundle\Controller;
 
 use App\Model\SpeedtestResult;
-use EfficienceIt\SpeedtestBundle\Service\ChunkService;
 use EfficienceIt\SpeedtestBundle\Service\ClientIpService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
@@ -17,19 +16,17 @@ class SpeedtestController extends AbstractController
     private const CHUNK_SIZE = 50;
     private const BYTES_SIZE = 1048576;
 
-    private ChunkService $chunkService;
     private ClientIpService $clientIpService;
     private string $clientIP;
 
-    public function __construct(ChunkService $chunkService, ClientIpService $clientIpService)
+    public function __construct(ClientIpService $clientIpService)
     {
-        $this->chunkService = $chunkService;
         $this->clientIpService = $clientIpService;
         $this->clientIP = $this->clientIpService->getClientIp();
     }
 
     /**
-     * @Route("/get-ip/{random_number<\d+>}", name="speedtest_get_ip", methods={"GET"})
+     * @Route("/get-ip/{random_number<\d*\.?\d*>}", name="speedtest_get_ip", methods={"GET"})
      */
     public function getIp(): Response
     {
@@ -46,7 +43,7 @@ class SpeedtestController extends AbstractController
     }
 
     /**
-     * @Route("/generate-chunks/{random_number<\d+>}", name="speedtest_generate_chunks", methods={"GET"})
+     * @Route("/generate-chunks/{random_number<\d*\.?\d*>}", name="speedtest_generate_chunks", methods={"GET"})
      */
     public function generateChunks() //chunk = segment of file, used to calculate download speed
     {
