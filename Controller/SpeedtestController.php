@@ -29,7 +29,7 @@ class SpeedtestController extends AbstractController
     }
 
     /**
-     * @Route("/get-ip/{random_number<\d+>}", name="speedtest_get_ip", methods={"GET"})
+     * @Route("/get-ip/{random_number<\d*\.?\d*>}", name="speedtest_get_ip", methods={"GET"})
      */
     public function getIp(): Response
     {
@@ -46,7 +46,7 @@ class SpeedtestController extends AbstractController
     }
 
     /**
-     * @Route("/generate-chunks/{random_number<\d+>}", name="speedtest_generate_chunks", methods={"GET"})
+     * @Route("/generate-chunks/{random_number<\d*\.?\d*>}", name="speedtest_generate_chunks", methods={"GET"})
      */
     public function generateChunks() //chunk = segment of file, used to calculate download speed
     {
