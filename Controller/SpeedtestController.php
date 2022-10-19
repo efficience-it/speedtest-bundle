@@ -3,7 +3,6 @@
 namespace EfficienceIt\SpeedtestBundle\Controller;
 
 use App\Model\SpeedtestResult;
-use EfficienceIt\SpeedtestBundle\Service\ChunkService;
 use EfficienceIt\SpeedtestBundle\Service\ClientIpService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
@@ -17,13 +16,11 @@ class SpeedtestController extends AbstractController
     private const CHUNK_SIZE = 50;
     private const BYTES_SIZE = 1048576;
 
-    private ChunkService $chunkService;
     private ClientIpService $clientIpService;
     private string $clientIP;
 
-    public function __construct(ChunkService $chunkService, ClientIpService $clientIpService)
+    public function __construct(ClientIpService $clientIpService)
     {
-        $this->chunkService = $chunkService;
         $this->clientIpService = $clientIpService;
         $this->clientIP = $this->clientIpService->getClientIp();
     }
