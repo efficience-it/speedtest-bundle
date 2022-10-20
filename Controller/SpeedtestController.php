@@ -2,7 +2,7 @@
 
 namespace EfficienceIt\SpeedtestBundle\Controller;
 
-use App\Model\SpeedtestResult;
+use EfficienceIt\SpeedtestBundle\Model\SpeedtestResult;
 use EfficienceIt\SpeedtestBundle\Service\ClientIpService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
