@@ -29,6 +29,7 @@
 }
 
 div#speedtestTextFinish {
+    margin-top: 2em;
     margin-bottom: 10px;
     opacity: 0;
     text-align: center;
@@ -109,7 +110,7 @@ div.speedtestGroup{
 }
 
 @media all and (max-width:40em){
-    body{
+    #speedtestWrapper {
         font-size:0.8em;
     }
 }

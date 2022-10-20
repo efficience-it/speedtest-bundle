@@ -45,7 +45,7 @@ class SpeedtestController extends AbstractController
     /**
      * @Route("/generate-chunks/{random_number<\d*\.?\d*>}", name="speedtest_generate_chunks", methods={"GET"})
      */
-    public function generateChunks() //chunk = segment of file, used to calculate download speed
+    public function generateChunks(): Response //chunk = segment of file, used to calculate download speed
     {
         return new Response(random_bytes(self::BYTES_SIZE * self::CHUNK_SIZE));
     }
