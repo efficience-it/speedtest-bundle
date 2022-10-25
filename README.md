@@ -93,4 +93,4 @@ class ResultsController extends AbstractController
 }
 ```
 
-With this route (called in AJAX), you can retrive your speedtest results and do whatever you want with it !
+With this route (called in AJAX), you can retrieve your speedtest results and do whatever you want with it !
