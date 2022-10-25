@@ -69,10 +69,18 @@ function startStop(){
 			document.getElementById('speedtestTextFinish').style.opacity = "1";
 			document.getElementById('speedtestStartStopBtn').style.display = "inline-block";
 
+			var results = {
+				'ip': uiData.clientIp,
+				'download': uiData.dlStatus,
+				'upload': uiData.ulStatus,
+				'ping': uiData.pingStatus,
+				'jitter': uiData.jitterStatus
+			};
+
 			let xhr = new XMLHttpRequest();
-			xhr.open('POST', location.origin +"/speedtest/speedtest-results", true);
+			xhr.open('POST', location.origin +"/speedtest-results", true);
 			xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-			xhr.send(JSON.stringify(uiData));
+			xhr.send(JSON.stringify(results));
 		};
 		s.start();
 	}

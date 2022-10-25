@@ -2,7 +2,6 @@
 
 namespace EfficienceIt\SpeedtestBundle\Controller;
 
-use EfficienceIt\SpeedtestBundle\Model\SpeedtestResult;
 use EfficienceIt\SpeedtestBundle\Service\ClientIpService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
@@ -48,26 +47,5 @@ class SpeedtestController extends AbstractController
     public function generateChunks(): Response //chunk = segment of file, used to calculate download speed
     {
         return new Response(random_bytes(self::BYTES_SIZE * self::CHUNK_SIZE));
-    }
-
-    /**
-     * @Route("/speedtest-results", name="speedtest_results", methods={"POST"})
-     */
-    public function speedtestResults(Request $request): Response
-    {
-        if (!$request->isXmlHttpRequest()) {
-            throw new AccessDeniedException();
-        }
-        $requestContent = json_decode($request->getContent(), true);
-
-        $result = (new SpeedtestResult())
-            ->setIp($requestContent['clientIp'])
-            ->setDownload($requestContent['dlStatus'])
-            ->setUpload($requestContent['ulStatus'])
-            ->setPing($requestContent['pingStatus'])
-            ->setJitter($requestContent['jitterStatus'])
-        ;
-
-        return new JsonResponse($result->toArray());
     }
 }
