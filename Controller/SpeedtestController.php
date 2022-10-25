@@ -2,7 +2,7 @@
 
 namespace EfficienceIt\SpeedtestBundle\Controller;
 
-use App\Model\SpeedtestResult;
+use EfficienceIt\SpeedtestBundle\Model\SpeedtestResult;
 use EfficienceIt\SpeedtestBundle\Service\ClientIpService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
@@ -45,7 +45,7 @@ class SpeedtestController extends AbstractController
     /**
      * @Route("/generate-chunks/{random_number<\d*\.?\d*>}", name="speedtest_generate_chunks", methods={"GET"})
      */
-    public function generateChunks() //chunk = segment of file, used to calculate download speed
+    public function generateChunks(): Response //chunk = segment of file, used to calculate download speed
     {
         return new Response(random_bytes(self::BYTES_SIZE * self::CHUNK_SIZE));
     }

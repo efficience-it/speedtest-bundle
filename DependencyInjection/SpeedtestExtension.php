@@ -10,13 +10,13 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class SpeedtestExtension extends Extension implements PrependExtensionInterface
 {
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $loader =new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yaml');
     }
 
-    public function prepend(ContainerBuilder $container)
+    public function prepend(ContainerBuilder $container): void
     {
         $twigConfig = [];
         $twigConfig['paths'][__DIR__.'/../Resources/views'] = "speedtest";
@@ -24,7 +24,7 @@ class SpeedtestExtension extends Extension implements PrependExtensionInterface
         $container->prependExtensionConfig('twig', $twigConfig);
     }
 
-    public function getAlias()
+    public function getAlias(): string
     {
         return parent::getAlias();
     }
