@@ -16,7 +16,7 @@ $ composer require efficience-it/speedtest-bundle
 
 ### Step 2: Configure the speedtest in your project
 
-First, copy the line below and paste into the `bundles.php` file.
+First, verify if the line below is in the `bundles.php` file. If not, copy and paste it.
 
 ```php
 EfficienceIt\SpeedtestBundle\SpeedtestBundle::class => ['all' => true]
@@ -67,3 +67,30 @@ To display the speedtest on your page, just include it in your template file as 
 ```
 
 You can access to your route (in this example `localhost/home`), and the speedtest should appear !
+
+## How to retrieve the results ?
+
+Create a new Controller (for example `ResultsController`), and copy/paste this code:
+
+```php
+/* DON'T ADD A @Route ANNOTATION */
+class ResultsController extends AbstractController
+{
+    /* DON'T CHANGE THIS ROUTE ! */
+    /**
+     * @Route("/speedtest-results", name="speedtest_results", methods={"POST"})
+     */
+    public function speedtestResults(Request $request): Response
+    {
+        if (!$request->isXmlHttpRequest()) {
+            throw new AccessDeniedException();
+        }
+        $requestContent = json_decode($request->getContent(), true);
+        dump($requestContent);
+
+        return new JsonResponse($requestContent);
+    }
+}
+```
+
+With this route (called in AJAX), you can retrieve your speedtest results and do whatever you want with it !
