@@ -1,0 +1,6 @@
+speedtest:
+  bundle:
+    download: Download
+    upload: Upload
+    finish_text: The speedtest is over, you can restart by clicking on the button
+    launch_button: LAUNCH THE SPEEDTEST

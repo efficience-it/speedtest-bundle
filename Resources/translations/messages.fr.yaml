@@ -1,0 +1,6 @@
+speedtest:
+  bundle:
+    download: Réception
+    upload: Émission
+    finish_text: Le speedtest est terminé, vous pouvez relancer en cliquant sur le bouton
+    launch_button: LANCER LE SPEEDTEST
