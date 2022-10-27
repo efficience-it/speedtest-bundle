@@ -6,13 +6,13 @@
     <div id="speedtestWrapper">
         <div class="speedtestGroup">
             <div class="speedtestArea">
-                <div class="speedtestName">{{ speedtest.bundle.download|trans }}</div>
+                <div class="speedtestName">{{ "speedtest.bundle.download"|trans }}</div>
                 <canvas id="dlMeter" class="meter"></canvas>
                 <div id="dlText" class="meterText"></div>
                 <div class="unit">Mb/s</div>
             </div>
             <div class="speedtestArea">
-                <div class="speedtestName">{{ speedtest.bundle.upload|trans }}</div>
+                <div class="speedtestName">{{ "speedtest.bundle.upload"|trans }}</div>
                 <canvas id="ulMeter" class="meter"></canvas>
                 <div id="ulText" class="meterText"></div>
                 <div class="unit">Mb/s</div>
@@ -30,8 +30,8 @@
                 <div class="unit">ms</div>
             </div>
         </div>
-        <div id="speedtestTextFinish">{{ speedtest.bundle.finish_text|trans }}</div>
-        <div id="speedtestStartStopBtn" onclick="startStop()">{{ speedtest.bundle.launch_button|trans }}</div>
+        <div id="speedtestTextFinish">{{ "speedtest.bundle.finish_text"|trans }}</div>
+        <div id="speedtestStartStopBtn" onclick="startStop()">{{ "speedtest.bundle.launch_button"|trans }}</div>
     </div>
 {% endblock %}
 

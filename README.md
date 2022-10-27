@@ -97,13 +97,7 @@ With this route (called in AJAX), you can retrieve your speedtest results and do
 
 ## Change the bundle language
 
-First, install the latest version of the `symfony-translation` bundle with this command.
-
-```bash
-$ composer require symfony-translation
-```
-
-Next, find the `config/packages/translation.yaml`. You just have to change the `default_path` parameter with the language you want.
+Find the `config/packages/translation.yaml`. You just have to change the `default_path` parameter with the language you want.
 
 Actually, you can translate in English (en) and French (fr). Here is an example of the `translation.yaml` file with French configuration.
 
