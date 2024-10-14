@@ -94,3 +94,18 @@ class ResultsController extends AbstractController
 ```
 
 With this route (called in AJAX), you can retrieve your speedtest results and do whatever you want with it !
+
+## Change the bundle language
+
+Find the `config/packages/translation.yaml`. You just have to change the `default_path` parameter with the language you want.
+
+Actually, you can translate in English (en) and French (fr). Here is an example of the `translation.yaml` file with French configuration.
+
+```yaml
+framework:
+    default_locale: fr  # Change the language here
+    translator:
+        default_path: '%kernel.project_dir%/translations'
+        fallbacks:
+            - en        # Default language if the default_locale is not found.
+```
